@@ -1,0 +1,141 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: #fafafa;
+  position: relative;
+}
+
+h1 {
+  font-family: monospace;
+}
+
+h2 {
+  font-family: "Jura", sans-serif !important;
+  font-size: 30px !important;
+  margin: auto !important;
+}
+
+h3 {
+  font-family: "Jura", sans-serif !important;
+  font-size: 24px !important;
+  margin: auto !important;
+}
+
+h6 {
+  font-family: "Jura", sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  margin-top: 5px !important;
+}
+
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6b3261 50%, #325a6b 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  left: 40%;
+  padding: 3vmin;
+  text-align: center;
+  top: 5rem;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+.box-area {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  width: 30rem;
+  position: fixed;
+  padding: 3vmin;
+  text-align: center;
+  top: 5rem;
+}
+.mdl-textfield {
+  padding-bottom: 24px !important;
+}
+
+.fullCard {
+  text-align: center;
+  font-family: "Jura", sans-serif !important;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 5px;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.custrow {
+  margin-left: 6em !important;
+  margin-right: 6em !important;
+}
+
+.p_style {
+  font-size: 15px !important;
+  text-align: center !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.field {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  height: 70px;
+}
+
+.footer{
+    margin-top: 3em;
+    margin-bottom: 0em;
+    text-align: center;
+    color: black;
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .row_res {
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+  }
+}
+
+@media screen and (max-width: 320) {
+  .top_heading {
+    font-size: 40px!important;
+  }
+}

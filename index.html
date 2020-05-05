@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Timestamp Converter">
+    <meta name="keywords" content="UTC to Local time, datetime to timestamp, Timestamp Converter">
+    <meta name="author" content="Jaya Chatterjee">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Timestamp Converter</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
+    <!-- Bootstrap & JQuery CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <!-- Material Design -->
+    <link rel="stylesheet" href="css/material.min.css">
+    <script src="scripts/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Below CDN links are required for DateTime Picker -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="scripts/javascript.js"></script>
+</head>
+
+<body onload="startTime(); startTimeUTC();">
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="content">
+        <header>
+            <h1 class="top_heading"
+                style="font-family: 'Fredericka the Great', cursive, sans-serif; font-size: 40px; margin: 0.5rem;">
+                TIMESTAMP
+                CONVERTER</h1>
+        </header>
+    </div>
+    <section style="margin-top: 4rem; margin-bottom: 5em;">
+        <div class="container" style="margin-top: 1em;">
+            <div class="row custrow row_res">
+                <!-- UTC Section -->
+                <div class="col-md-6">
+                    <div class="fullCard">
+                        <h3 style="color: #4d66d1;">UTC date</h3>
+                        <h2 id="UTC-date"></h2>
+                        <h3 style="color: #4d66d1;">UTC time</h3>
+                        <h2 id="UTC-live-clock"></h2>
+                        <h3 style="color: #4d66d1;">UNIX timestamp</h3>
+                        <h2 id="UTC-ts"></h2>
+                        <div>
+                            <!-- Timestamp Form -->
+                            <form action="#" style="text-align: center;">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                    style="margin-top: 2rem;">
+                                    <input class="mdl-textfield__input" type="text" onkeyup="getTS(this);"
+                                        pattern="-?[0-9]*(\.[0-9]+)?" id="timestamp">
+                                    <label class="mdl-textfield__label" for="sample4">Enter Timestamp</label>
+                                    <span class="mdl-textfield__error">Input is not a number!</span>
+                                </div>
+                            </form>
+                            <!-- Timestamp Form -->
+                            
+                            <div class="field">
+                                <p class="p_style">to UTC time & date</p>
+                                <h6 id="utc_time"></h6>
+                            </div>
+                            <div class="field">
+                                <p class="p_style">to local time & date:</p>
+                                <h6 id="local_time"> </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- UTC Section End -->
+                <!-- Local Section -->
+                <div class="col-md-6">
+                    <div class="fullCard">
+                        <h3 style="color: #4d66d1;">Local date</h3>
+                        <h2 id="local-date"></h2>
+                        <h3 style="color: #4d66d1;">Local time</h3>
+                        <h2 id="local-live-clock"></h2>
+                        <h3 style="color: #4d66d1;">Local timezone</h3>
+                        <h2 id="local-tz"></h2>
+                        <div>
+                            <!-- Date Picker -->
+                            <div class="field" style="box-shadow: 4px 5.5px 7px silver; margin-top: 2.2em;">
+                                <div class="form-group"
+                                    style="margin-left: 1em; margin-right: 1em; margin-bottom: 0.5em;">
+                                    <div class='input-group date' id='datepicker' style="margin-top: 1em;">
+                                        <input type='text' class="form-control"
+                                            style="background-color: RGBA(255, 255, 255, 0.5);"
+                                            placeholder="Convert local DD-MM-YYYY" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Date Picker End -->
+                            <div class="field" style="box-shadow: 4px 5.5px 7px silver;">
+                                <!-- Time Form -->
+                                <form action="">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <!-- Hour Form -->
+                                                <div style=" text-align: center;">
+                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                                        style="width: 33%;">
+                                                        <input class="mdl-textfield__input inputs" type="text"
+                                                            onkeyup="autoTab('hh', '2', 'mm')" oninput="getTimeValue();"
+                                                            pattern="-?[0-9]*(\.[0-9]+)?" id="hh" maxlength="2" min="0"
+                                                            max="23">
+                                                        <label class="mdl-textfield__label" for="hh">
+                                                            HH</label>
+                                                        <span class="mdl-textfield__error"
+                                                            style="font-size: 9px!important">No. only!</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- Minute Form -->
+                                                <div style=" text-align: center;">
+                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                                        style="width: 33%;">
+                                                        <input class="mdl-textfield__input inputs" type="text"
+                                                            onkeyup="autoTab('mm', '2', 'ss')" oninput="getTimeValue();"
+                                                            pattern="-?[0-9]*(\.[0-9]+)?" id="mm" maxlength="2" min="0"
+                                                            max="59">
+                                                        <label class="mdl-textfield__label" for="mm">
+                                                            MM</label>
+                                                        <span class="mdl-textfield__error"
+                                                            style="font-size: 9px!important">No. only!</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- Second Form -->
+                                                <div style=" text-align: center;">
+                                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                                        style="width: 33%;">
+                                                        <input class="mdl-textfield__input inputs" type="text"
+                                                            oninput="getTimeValue();" pattern="-?[0-9]*(\.[0-9]+)?"
+                                                            id="ss" maxlength="2" min="0" max="59">
+                                                        <label class="mdl-textfield__label" for="ss">
+                                                            SS</label>
+                                                        <span class="mdl-textfield__error"
+                                                            style="font-size: 9px!important">No. only!</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                                <!-- Time Form End-->
+                            </div>
+                            <!-- Timestamp Conversion Output -->
+                            <div class="field">
+                                <p class="p_style">to seconds since epoch:</p>
+                                <h6 id="getTS"></h6>
+                            </div>
+                             <!-- Timestamp Conversion Output End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Local Section End -->
+            </div>
+        </div>
+    </section>
+    <!--Footer-Start-->
+    <footer class="footer">
+        Designed by Jaya Chatterjee
+    </footer>
+    <!--Footer-End-->
+</body>
+
+</html>
